@@ -19,6 +19,7 @@ dependencies:
       url: https://github.com/google/flutter-desktop-embedding.git
       path: plugins/window_size
 
+
   # State Management
   get: ^4.6.5
 
@@ -53,7 +54,7 @@ dependencies:
 
   # TOOLS
   device_info_plus: ^0.0.1
-  open_file: ^2.1.1
+  open_file: ^3.2.1
 
 
 
@@ -65,3 +66,33 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/fonts/
+
+  fonts:
+    - family: Abel
+      fonts:
+        - asset: assets/fonts/Abel-Regular.ttf
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
+        - asset: assets/fonts/Lato-Light.ttf
+          weight: 300
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Regular.ttf
+        - asset: assets/fonts/Raleway-Light.ttf
+          weight: 300
+    - family: RobotoCondensed
+      fonts:
+        - asset: assets/fonts/RobotoCondensed-Regular.ttf
+        - asset: assets/fonts/RobotoCondensed-Light.ttf
+          weight: 300
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-Medium.ttf
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          weight: 700

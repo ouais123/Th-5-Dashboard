@@ -9,7 +9,6 @@ class OverViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Navigator.defaultRouteName
     return ResponsiveWidget(
       large: Row(
         children: [
