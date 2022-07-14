@@ -1,5 +1,5 @@
 import 'package:dashboard/binding/home_binding.dart';
-import 'package:dashboard/views/pages/home_page.dart';
+import 'package:dashboard/views/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';

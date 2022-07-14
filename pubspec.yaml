@@ -55,6 +55,8 @@ dependencies:
   # TOOLS
   device_info_plus: ^0.0.1
   open_file: ^3.2.1
+  fl_chart: ^0.55.0
+  url_launcher: ^6.1.5
 
 
 
@@ -69,6 +71,7 @@ flutter:
 
   assets:
     - assets/fonts/
+    - assets/images/
 
   fonts:
     - family: Abel

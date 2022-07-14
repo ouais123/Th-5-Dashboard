@@ -1,5 +1,5 @@
 import 'package:dashboard/controllers/home_conttroler.dart';
-import 'package:dashboard/views/pages/overview_page.dart';
+import 'package:dashboard/views/pages/overview/overview_page.dart';
 import 'package:dashboard/views/widgets/home/home_sliver_appbar.dart';
 
 import 'package:flutter/material.dart';

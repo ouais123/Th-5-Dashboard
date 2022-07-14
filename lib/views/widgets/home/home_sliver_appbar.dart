@@ -1,5 +1,7 @@
 import 'package:dashboard/controllers/home_conttroler.dart';
+import 'package:dashboard/core/constants/strings.dart';
 import 'package:dashboard/core/functions/size.dart';
+import 'package:dashboard/util/extension/color_scheme_extension.dart';
 import 'package:dashboard/views/widgets/app/responsiveness.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +14,14 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isMedium(context) || isLarge(context))
+    if (isMediumLarge(context) || isLarge(context))
       homeController.scaffoldKey.currentState?.closeDrawer();
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
+        color: Colors.white,
         border: Border(
           bottom: BorderSide(
-            color: Color(0xFFE5DCDC),
+            color: Theme.of(context).colorScheme.border,
           ),
         ),
       ),
@@ -27,13 +30,29 @@ class HomeAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.sp),
-              child: SelectableText(
-                "Dashboard",
-                style: TextStyle(
-                  fontSize: 25.sp,
-                  color: Colors.black.withOpacity(0.7),
-                ),
+              padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.h),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50.sp),
+                    child: Image.asset(
+                      "$assetsImages/dashboard-icon.png",
+                      height: 38.h,
+                      width: 38.h,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5.w,
+                  ),
+                  SelectableText(
+                    "Dashboard",
+                    style: TextStyle(
+                      fontSize: 23.sp,
+                      color: Theme.of(context).colorScheme.text,
+                    ),
+                  ),
+                ],
               ),
             ),
             Row(
@@ -41,17 +60,32 @@ class HomeAppBar extends StatelessWidget {
             )
           ],
         ),
-        small: Row(
+        medium: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-                onPressed: () {
-                  homeController.scaffoldKey.currentState?.openDrawer();
-                },
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.black.withOpacity(0.7),
-                )),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    homeController.scaffoldKey.currentState?.openDrawer();
+                  },
+                  icon: Icon(
+                    Icons.menu,
+                    color: Theme.of(context).colorScheme.text,
+                  ),
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                SelectableText(
+                  "Dashboard",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    color: Theme.of(context).colorScheme.text,
+                  ),
+                ),
+              ],
+            ),
             Row(
               children: actions,
             )
@@ -68,7 +102,7 @@ class HomeAppBar extends StatelessWidget {
         "owais hamouda",
         style: TextStyle(
           fontSize: 20.sp,
-          color: Colors.black.withOpacity(0.7),
+          color: Theme.of(Get.context!).colorScheme.text,
         ),
       ),
     ),
@@ -79,7 +113,7 @@ class HomeAppBar extends StatelessWidget {
       padding: EdgeInsets.all(7.sp),
       child: Icon(
         FluentIcons.person_24_regular,
-        color: Colors.black.withOpacity(0.7),
+        color: Theme.of(Get.context!).colorScheme.text,
         size: 30.sp,
       ),
     ),
