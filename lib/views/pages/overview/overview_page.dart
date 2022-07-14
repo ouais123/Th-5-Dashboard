@@ -8,8 +8,15 @@ import 'package:dashboard/views/widgets/app/responsiveness.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OverViewPage extends StatelessWidget {
-  OverViewPage({Key? key}) : super(key: key);
+class OverViewPage extends StatefulWidget {
+  const OverViewPage({Key? key}) : super(key: key);
+
+  @override
+  State<OverViewPage> createState() => _OverViewPageState();
+}
+
+class _OverViewPageState extends State<OverViewPage>
+    with AutomaticKeepAliveClientMixin {
   final OverViewController overViewController = Get.find();
 
   @override
@@ -22,4 +29,7 @@ class OverViewPage extends StatelessWidget {
       small: OverViewSmallPage(),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -37,8 +37,8 @@ class HomeAppBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50.sp),
                     child: Image.asset(
                       "$assetsImages/dashboard-icon.png",
-                      height: 38.h,
-                      width: 38.h,
+                      height: 30.h,
+                      width: 30.h,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -48,7 +48,7 @@ class HomeAppBar extends StatelessWidget {
                   SelectableText(
                     "Dashboard",
                     style: TextStyle(
-                      fontSize: 23.sp,
+                      fontSize: 20.sp,
                       color: Theme.of(context).colorScheme.text,
                     ),
                   ),
@@ -91,6 +91,26 @@ class HomeAppBar extends StatelessWidget {
             )
           ],
         ),
+        small: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Material(
+              color: Colors.transparent,
+              child: IconButton(
+                onPressed: () {
+                  homeController.scaffoldKey.currentState?.openDrawer();
+                },
+                icon: Icon(
+                  Icons.menu,
+                  color: Theme.of(context).colorScheme.text,
+                ),
+              ),
+            ),
+            Row(
+              children: actions,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -101,24 +121,21 @@ class HomeAppBar extends StatelessWidget {
       child: SelectableText(
         "owais hamouda",
         style: TextStyle(
-          fontSize: 20.sp,
+          fontSize: 18.sp,
           color: Theme.of(Get.context!).colorScheme.text,
         ),
       ),
     ),
-    SizedBox(
-      width: 3.sp,
-    ),
     Padding(
-      padding: EdgeInsets.all(7.sp),
+      padding: EdgeInsets.all(5.h),
       child: Icon(
         FluentIcons.person_24_regular,
         color: Theme.of(Get.context!).colorScheme.text,
-        size: 30.sp,
+        size: 25.sp,
       ),
     ),
     SizedBox(
-      width: 5.sp,
+      width: 5.w,
     ),
   ];
 }

@@ -4,4 +4,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final RxInt indexPage = 0.obs;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final RxBool isDrawerOutsideVisiable = true.obs;
+
+  final PageController pageController = PageController();
 }

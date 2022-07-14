@@ -54,6 +54,7 @@ class CardBarChart extends StatelessWidget {
                   barGroups: showingGroups(),
                   gridData: gridData,
                   borderData: borderData,
+                  barTouchData: barTouchData,
                 ),
               ),
             ),
@@ -211,6 +212,12 @@ class CardBarChart extends StatelessWidget {
           strokeWidth: 0.3,
           color: const Color(0xFF575757),
           dashArray: [3],
+        ),
+      );
+  BarTouchData get barTouchData => BarTouchData(
+        handleBuiltInTouches: true,
+        touchTooltipData: BarTouchTooltipData(
+          tooltipBgColor: Colors.blueGrey.withOpacity(0.7),
         ),
       );
 
