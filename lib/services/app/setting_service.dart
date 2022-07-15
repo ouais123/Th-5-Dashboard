@@ -12,6 +12,4 @@ class SettingService extends GetxService {
     if (isSuccess) _getStorage = GetStorage();
     return this;
   }
-
-  int initIndexPage = 0;
 }

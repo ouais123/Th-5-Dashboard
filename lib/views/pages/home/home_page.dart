@@ -8,14 +8,9 @@ import 'package:dashboard/views/widgets/home/home_sliver_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   final HomeController homeController = Get.find();
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -24,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     homeController.isDrawerOutsideVisiable.value =
         (isMediumLarge(context) || isLarge(context));
+
     return Scaffold(
       key: scaffoldKey,
       drawerEnableOpenDragGesture: false,
