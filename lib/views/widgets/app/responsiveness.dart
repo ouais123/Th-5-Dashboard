@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:dashboard/core/functions/size.dart';
+import 'package:dashboard/core/functions/sizes.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveWidget extends StatelessWidget {

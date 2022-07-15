@@ -1,6 +1,6 @@
 import 'package:dashboard/controllers/home_conttroler.dart';
 import 'package:dashboard/core/constants/strings.dart';
-import 'package:dashboard/core/functions/size.dart';
+import 'package:dashboard/core/functions/sizes.dart';
 import 'package:dashboard/util/extension/color_scheme_extension.dart';
 import 'package:dashboard/views/widgets/app/responsiveness.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -9,13 +9,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class HomeAppBar extends StatelessWidget {
-  HomeAppBar({Key? key}) : super(key: key);
+  HomeAppBar({
+    Key? key,
+    required this.scaffoldKey,
+  }) : super(key: key);
   final HomeController homeController = Get.find();
-
+  final GlobalKey<ScaffoldState> scaffoldKey;
   @override
   Widget build(BuildContext context) {
     if (isMediumLarge(context) || isLarge(context))
-      homeController.scaffoldKey.currentState?.closeDrawer();
+      scaffoldKey.currentState?.closeDrawer();
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -67,7 +70,7 @@ class HomeAppBar extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    homeController.scaffoldKey.currentState?.openDrawer();
+                    scaffoldKey.currentState?.openDrawer();
                   },
                   icon: Icon(
                     Icons.menu,
@@ -98,7 +101,7 @@ class HomeAppBar extends StatelessWidget {
               color: Colors.transparent,
               child: IconButton(
                 onPressed: () {
-                  homeController.scaffoldKey.currentState?.openDrawer();
+                  scaffoldKey.currentState?.openDrawer();
                 },
                 icon: Icon(
                   Icons.menu,

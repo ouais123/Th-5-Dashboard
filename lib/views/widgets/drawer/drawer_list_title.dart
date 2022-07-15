@@ -19,10 +19,7 @@ class DrawerListTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(5.sp),
-      onTap: () {
-        homeController.indexPage.value = index;
-        homeController.pageController.jumpToPage(index);
-      },
+      onTap: () => homeController.changeIndex(index),
       child: Obx(
         () => Container(
           decoration: BoxDecoration(

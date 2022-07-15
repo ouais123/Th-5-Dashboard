@@ -1,5 +1,5 @@
 import 'package:dashboard/controllers/home_conttroler.dart';
-import 'package:dashboard/core/functions/size.dart';
+import 'package:dashboard/core/functions/sizes.dart';
 import 'package:dashboard/views/pages/driver/driver_page.dart';
 import 'package:dashboard/views/pages/overview/overview_page.dart';
 import 'package:dashboard/views/widgets/drawer/drawer_app.dart';
@@ -8,17 +8,24 @@ import 'package:dashboard/views/widgets/home/home_sliver_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final HomeController homeController = Get.find();
+
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     homeController.isDrawerOutsideVisiable.value =
         (isMediumLarge(context) || isLarge(context));
     return Scaffold(
-      key: homeController.scaffoldKey,
+      key: scaffoldKey,
       drawerEnableOpenDragGesture: false,
       drawer: const Drawer(
         backgroundColor: Colors.white,
@@ -29,7 +36,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            HomeAppBar(),
+            HomeAppBar(scaffoldKey: scaffoldKey),
             Expanded(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,

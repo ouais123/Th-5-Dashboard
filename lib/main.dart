@@ -1,22 +1,25 @@
-import 'package:dashboard/binding/home_binding.dart';
-import 'package:dashboard/views/pages/home/home_page.dart';
+import 'package:dashboard/core/functions/init_services.dart';
+import 'package:dashboard/core/router/pages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 
-void main() => runApp(const DashboardApp());
+void main(List<String> args) async {
+  await initServices();
+  runApp(const DashboardApp());
+}
 
 class DashboardApp extends StatelessWidget {
   const DashboardApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Colors.black.withOpacity(0.95),
-      ),
-    );
+    // if (!isWeb && !isDisktop)
+    //   SystemChrome.setSystemUIOverlayStyle(
+    //     SystemUiOverlayStyle(
+    //       statusBarColor: Colors.black.withOpacity(0.95),
+    //     ),
+    //   );
     return ScreenUtilInit(
       minTextAdapt: true,
       splitScreenMode: true,
@@ -30,15 +33,8 @@ class DashboardApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: const Color(0xFFF7F7F8),
         ),
-        getPages: [
-          GetPage(
-            name: "/",
-            page: () => HomePage(),
-            binding: HomeBinding(),
-            transition: Transition.leftToRight,
-            transitionDuration: const Duration(milliseconds: 600),
-          ),
-        ],
+        defaultTransition: Transition.fadeIn,
+        getPages: getPages,
       ),
     );
   }
