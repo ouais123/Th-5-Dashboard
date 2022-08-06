@@ -2,8 +2,6 @@ import 'package:dashboard/services/app/setting_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-int indexPage = 0;
-
 class NoFoundMiddleware extends GetMiddleware {
   final SettingService settingService = Get.find();
   @override

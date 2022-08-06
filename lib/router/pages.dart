@@ -13,7 +13,7 @@ List<GetPage> getPages = [
     page: () => HomePage(),
     binding: HomeBinding(),
     transition: Transition.leftToRight,
-    transitionDuration: const Duration(milliseconds: 600),
+    transitionDuration: const Duration(milliseconds: 500),
   ),
   GetPage(
     name: "/not-found",

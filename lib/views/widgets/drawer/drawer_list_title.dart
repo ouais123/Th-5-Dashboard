@@ -21,36 +21,49 @@ class DrawerListTitle extends StatelessWidget {
       borderRadius: BorderRadius.circular(5.sp),
       onTap: () => homeController.changeIndex(index),
       child: Obx(
-        () => Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5.sp),
-            color: homeController.indexPage.value == index
-                ? Theme.of(context).splashColor
-                : Colors.transparent,
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 12.h),
-          child: Row(
-            children: [
-              Icon(
-                icon,
-                size: 20.sp,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 5.w,
-              ),
-              Text(
-                title,
-                style: TextStyle(
+        () => MouseRegion(
+          onEnter: (_) => homeController.indexHover.value = index,
+          onExit: (_) => homeController.indexHover.value = -1,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.sp),
+              color: color,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 12.h),
+            child: Row(
+              children: [
+                Icon(
+                  icon,
+                  size: 20.sp,
                   color: Colors.white,
-                  fontSize: 16.sp,
-                  fontFamily: "Raleway",
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: 5.w,
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.sp,
+                    fontFamily: "Raleway",
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  Color get color {
+    if (homeController.indexPage.value == index)
+      return Theme.of(Get.context!).splashColor.withOpacity(0.7);
+
+    if (homeController.indexHover.value == index)
+      return Theme.of(Get.context!).splashColor.withOpacity(0.5);
+
+    return Colors.transparent;
   }
 }
