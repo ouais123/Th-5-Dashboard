@@ -1,20 +1,20 @@
-import 'package:dashboard/controllers/drivers_controller.dart';
+import 'package:dashboard/controllers/complaints_conttroler.dart';
 import 'package:dashboard/util/extension/color_scheme_extension.dart';
-import 'package:dashboard/views/widgets/driver/item_driver.dart';
+import 'package:dashboard/views/widgets/complaints/item_complaint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class DriverPage extends StatefulWidget {
-  const DriverPage({Key? key}) : super(key: key);
+class ComplaintsPage extends StatefulWidget {
+  const ComplaintsPage({Key? key}) : super(key: key);
 
   @override
-  State<DriverPage> createState() => _DriverPageState();
+  State<ComplaintsPage> createState() => _ComplaintsPageState();
 }
 
-class _DriverPageState extends State<DriverPage>
+class _ComplaintsPageState extends State<ComplaintsPage>
     with AutomaticKeepAliveClientMixin {
-  final DriversController driversController = Get.find();
+  final ComplaintsConttroler complaintsConttroler = Get.find();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -38,7 +38,7 @@ class _DriverPageState extends State<DriverPage>
           mainAxisSize: MainAxisSize.min,
           children: [
             SelectableText(
-              "Drivers",
+              "Complaints",
               maxLines: 1,
               style: TextStyle(
                 fontSize: 20.sp,
@@ -47,7 +47,7 @@ class _DriverPageState extends State<DriverPage>
               ),
             ),
             SelectableText(
-              "Show unproven drivers",
+              "Sort by most recent by date",
               maxLines: 1,
               style: TextStyle(
                 fontSize: 14.sp,
@@ -99,9 +99,9 @@ class _DriverPageState extends State<DriverPage>
                     ),
                     Container(
                       alignment: Alignment.center,
-                      width: constraints.maxWidth * 0.2,
+                      width: constraints.maxWidth * 0.1,
                       child: const Text(
-                        "Email",
+                        "User Id",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontFamily: "OpenSans",
@@ -112,7 +112,7 @@ class _DriverPageState extends State<DriverPage>
                       alignment: Alignment.center,
                       width: constraints.maxWidth * 0.2,
                       child: const Text(
-                        "Phone",
+                        "User Name",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontFamily: "OpenSans",
@@ -121,9 +121,9 @@ class _DriverPageState extends State<DriverPage>
                     ),
                     Container(
                       alignment: Alignment.center,
-                      width: constraints.maxWidth * 0.3,
+                      width: constraints.maxWidth * 0.4,
                       child: const Text(
-                        "Status",
+                        "Content",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontFamily: "OpenSans",
@@ -137,9 +137,9 @@ class _DriverPageState extends State<DriverPage>
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: driversController.drivers.length,
-              itemBuilder: (context, index) => ItemDriver(
-                driver: driversController.drivers[index],
+              itemCount: complaintsConttroler.complaints.length,
+              itemBuilder: (context, index) => ItemComplaint(
+                complaints: complaintsConttroler.complaints[index],
                 index: index,
               ),
             ),

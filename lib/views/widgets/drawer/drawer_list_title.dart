@@ -9,17 +9,19 @@ class DrawerListTitle extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.index,
+    required this.onTap,
   }) : super(key: key);
   final String title;
   final IconData icon;
   final int index;
+  final void Function() onTap;
   final HomeController homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(5.sp),
-      onTap: () => homeController.changeIndex(index),
+      onTap: onTap,
       child: Obx(
         () => MouseRegion(
           onEnter: (_) => homeController.indexHover.value = index,

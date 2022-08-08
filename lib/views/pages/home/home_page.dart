@@ -1,5 +1,6 @@
 import 'package:dashboard/controllers/home_conttroler.dart';
 import 'package:dashboard/core/functions/sizes.dart';
+import 'package:dashboard/views/pages/complaints/complaints_page.dart';
 import 'package:dashboard/views/pages/driver/driver_page.dart';
 import 'package:dashboard/views/pages/overview/overview_page.dart';
 import 'package:dashboard/views/widgets/drawer/drawer_app.dart';
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       drawerEnableOpenDragGesture: false,
-      drawer: const Drawer(
+      drawer: Drawer(
         backgroundColor: Colors.white,
         child: SafeArea(
           child: DrawerApp(),
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   Obx(
                     () => homeController.isDrawerOutsideVisiable.value
-                        ? const Expanded(
+                        ? Expanded(
                             child: DrawerApp(),
                           )
                         : const SizedBox(),
@@ -52,7 +53,7 @@ class HomePage extends StatelessWidget {
                       children: const [
                         OverViewPage(),
                         DriverPage(),
-                        SizedBox(),
+                        ComplaintsPage(),
                         SizedBox(),
                       ],
                     ),
