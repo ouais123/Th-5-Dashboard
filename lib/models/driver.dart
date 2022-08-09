@@ -10,4 +10,13 @@ class Driver {
     required this.email,
     required this.phone,
   });
+
+  Driver.fromMap(Map<String, dynamic> map)
+      : id = map['id'] ?? -1,
+        name = map['name'] ?? "",
+        email = map['email'] ?? "",
+        phone = map['phone'] ?? "";
+
+  static List<Driver> fromList(List list) =>
+      list.map((e) => Driver.fromMap(e)).toList();
 }

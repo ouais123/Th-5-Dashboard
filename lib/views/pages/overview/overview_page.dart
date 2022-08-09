@@ -21,12 +21,18 @@ class _OverViewPageState extends State<OverViewPage>
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
-      large: OverViewLargePage(),
-      mediumLarge: OverViewMediumLargePage(),
-      medium: OverViewMediumPage(),
-      smallMedium: OverViewSmallMediumPage(),
-      small: OverViewSmallPage(),
+    return Obx(
+      () => overViewController.isLoading.value
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : ResponsiveWidget(
+              large: OverViewLargePage(),
+              mediumLarge: OverViewMediumLargePage(),
+              medium: OverViewMediumPage(),
+              smallMedium: OverViewSmallMediumPage(),
+              small: OverViewSmallPage(),
+            ),
     );
   }
 

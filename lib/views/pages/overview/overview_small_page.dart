@@ -50,9 +50,9 @@ class OverViewSmallPage extends StatelessWidget {
             children: [
               SizedBox(width: 10.w),
               DigitalStats(
-                title: "Errors",
-                value: overViewController.numErrors.value.toString(),
-                icon: Icons.close,
+                title: "Orders",
+                value: overViewController.numOrders.value.toString(),
+                icon: Icons.chair,
                 iconColor: Colors.red,
               ),
               SizedBox(width: 10.w),

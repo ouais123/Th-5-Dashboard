@@ -75,7 +75,9 @@ class ItemDriver extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                driversController.acceptDriver(driver.id);
+                              },
                               child: const Text("Accepts"),
                             ),
                             SizedBox(
@@ -90,7 +92,9 @@ class ItemDriver extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                driversController.deleteDriver(driver.id);
+                              },
                               child: const Text(" Reject "),
                             ),
                           ],

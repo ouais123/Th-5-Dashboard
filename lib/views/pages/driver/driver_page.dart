@@ -134,14 +134,22 @@ class _DriverPageState extends State<DriverPage>
                 ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: driversController.drivers.length,
-              itemBuilder: (context, index) => ItemDriver(
-                driver: driversController.drivers[index],
-                index: index,
-              ),
+            Obx(
+              () => driversController.isLoading.value
+                  ? const Center(
+                      child: LinearProgressIndicator(
+                        color: Colors.deepPurple,
+                      ),
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: driversController.drivers.length,
+                      itemBuilder: (context, index) => ItemDriver(
+                        driver: driversController.drivers[index],
+                        index: index,
+                      ),
+                    ),
             ),
           ],
         ),

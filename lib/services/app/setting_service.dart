@@ -12,4 +12,11 @@ class SettingService extends GetxService {
     if (isSuccess) _getStorage = GetStorage();
     return this;
   }
+
+  final String tokenKey = "token_key";
+
+  Future<void> setToken(String val) async =>
+      await _getStorage.write(tokenKey, val);
+
+  String getToken() => _getStorage.read(tokenKey);
 }

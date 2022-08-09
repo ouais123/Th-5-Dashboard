@@ -25,7 +25,7 @@ class _ComplaintsPageState extends State<ComplaintsPage>
         ),
         padding: EdgeInsets.symmetric(
           horizontal: 8.w,
-          vertical: 10.h,
+          vertical: 20.h,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -134,14 +134,22 @@ class _ComplaintsPageState extends State<ComplaintsPage>
                 ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: complaintsConttroler.complaints.length,
-              itemBuilder: (context, index) => ItemComplaint(
-                complaints: complaintsConttroler.complaints[index],
-                index: index,
-              ),
+            Obx(
+              () => complaintsConttroler.isLoading.value
+                  ? const Center(
+                      child: LinearProgressIndicator(
+                        color: Colors.deepPurple,
+                      ),
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: complaintsConttroler.complaints.length,
+                      itemBuilder: (context, index) => ItemComplaint(
+                        complaints: complaintsConttroler.complaints[index],
+                        index: index,
+                      ),
+                    ),
             ),
           ],
         ),

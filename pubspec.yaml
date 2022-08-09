@@ -47,6 +47,7 @@ dependencies:
   cached_network_image: ^3.2.1
   fl_chart: ^0.55.0
   data_table_2: ^2.3.5
+  google_fonts: ^2.0.0
 
 
   # Date
@@ -74,7 +75,7 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/
-
+    - assets/google_fonts/
   fonts:
     - family: Abel
       fonts:

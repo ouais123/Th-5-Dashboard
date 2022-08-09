@@ -58,8 +58,7 @@ class CardLineChart extends StatelessWidget {
                         borderData: borderData,
                         gridData: gridData,
                         lineTouchData: lineTouchData,
-                        minY: 42,
-                        maxY: 50,
+                      
                         minX: 0,
                         maxX: 8,
                       ),

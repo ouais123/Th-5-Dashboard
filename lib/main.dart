@@ -1,3 +1,4 @@
+import 'package:dashboard/core/app/locator_app.dart';
 import 'package:dashboard/core/functions/init_services.dart';
 import 'package:dashboard/core/functions/platforms.dart';
 import 'package:dashboard/router/pages.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 Future<void> main(List<String> args) async {
+  await setupGetIt();
   await initServices();
   runApp(const DashboardApp());
 }
@@ -29,7 +31,7 @@ class DashboardApp extends StatelessWidget {
         title: 'Dashboard',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.green,
+          primarySwatch: Colors.deepPurple,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
           ),

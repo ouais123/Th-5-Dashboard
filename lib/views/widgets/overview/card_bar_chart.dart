@@ -187,11 +187,11 @@ class CardBarChart extends StatelessWidget {
         leftTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
-            interval: 5,
+            interval: 20000,
             reservedSize: 40,
             getTitlesWidget: (double value, TitleMeta meta) {
               return SelectableText(
-                "$value \$",
+                "$value SP",
                 style: TextStyle(
                   color: const Color(0xff75729e),
                   fontFamily: "OpenSans",

@@ -1,48 +1,143 @@
+import 'package:dashboard/core/app/locator_app.dart';
+import 'package:dashboard/models/overview.dart';
 import 'package:dashboard/models/point.dart';
 import 'package:dashboard/models/sections.dart';
+import 'package:dashboard/services/api/home_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
 class OverViewController extends GetxController {
-  final RxInt numUsers = 1300.obs;
-  final RxInt numDrivers = 89.obs;
-  final RxInt numErrors = 29.obs;
-  final RxInt numCompaints = 689.obs;
+  final RxBool isLoading = false.obs;
+  @override
+  void onInit() {
+    super.onInit();
+    getOverView();
+  }
 
-  final Iterable<Point> seriesLineChart = [
-    Point(x: 1, y: 44),
-    Point(x: 2, y: 45),
-    Point(x: 3, y: 46),
-    Point(x: 4, y: 45),
-    Point(x: 5, y: 46),
-    Point(x: 6, y: 47),
-    Point(x: 7, y: 48),
-  ];
+  Future<void> getOverView() async {
+    isLoading.value = true;
+    HomeService homeService = locator.get<HomeService>();
+    OverView? overView = await homeService.getOverView();
 
-  final Iterable<Sections> seriesPieChart = [
-    Sections(
-      title: "Available",
-      value: 34.11,
-      index: 0,
-      color: Colors.red,
-    ),
-    Sections(
-      title: "Stop",
-      value: 65.89,
-      index: 1,
-      color: Colors.orange,
-    )
-  ];
+    if (overView != null) {
+      numUsers.value = overView.numUsers;
+      numDrivers.value = overView.numDrivers;
+      numOrders.value = overView.numOrders;
+      numCompaints.value = overView.numCompaints;
 
-  final Iterable<Point> seriesBarChart = [
-    Point(x: 1, y: 5),
-    Point(x: 2, y: 7),
-    Point(x: 3, y: 5),
-    Point(x: 4, y: 8),
-    Point(x: 5, y: 9),
-    Point(x: 6, y: 11),
-    Point(x: 7, y: 7)
-  ];
+      seriesPieChart.add(Sections(
+        title: "Available",
+        value: overView.pieChart.activateDrivers,
+        index: 0,
+        color: Colors.red,
+      ));
+      seriesPieChart.add(Sections(
+        title: "Stop",
+        value: overView.pieChart.notActivateDrivers,
+        index: 1,
+        color: Colors.orange,
+      ));
+
+      seriesLineChart.add(
+        Point(
+          x: 1,
+          y: overView.lineChart.sunday.toDouble(),
+        ),
+      );
+      seriesLineChart.add(
+        Point(
+          x: 2,
+          y: overView.lineChart.monday.toDouble(),
+        ),
+      );
+      seriesLineChart.add(
+        Point(
+          x: 3,
+          y: overView.lineChart.tuesday.toDouble(),
+        ),
+      );
+      seriesLineChart.add(
+        Point(
+          x: 4,
+          y: overView.lineChart.wendnesday.toDouble(),
+        ),
+      );
+      seriesLineChart.add(
+        Point(
+          x: 5,
+          y: overView.lineChart.thersday.toDouble(),
+        ),
+      );
+      seriesLineChart.add(
+        Point(
+          x: 6,
+          y: overView.lineChart.friday.toDouble(),
+        ),
+      );
+      seriesLineChart.add(
+        Point(
+          x: 7,
+          y: overView.lineChart.saturday.toDouble(),
+        ),
+      );
+
+      seriesBarChart.add(
+        Point(
+          x: 1,
+          y: overView.barChart.sunday.toDouble(),
+        ),
+      );
+      seriesBarChart.add(
+        Point(
+          x: 2,
+          y: overView.barChart.monday.toDouble(),
+        ),
+      );
+      seriesBarChart.add(
+        Point(
+          x: 3,
+          y: overView.barChart.tuesday.toDouble(),
+        ),
+      );
+      seriesBarChart.add(
+        Point(
+          x: 4,
+          y: overView.barChart.wendnesday.toDouble(),
+        ),
+      );
+      seriesBarChart.add(
+        Point(
+          x: 5,
+          y: overView.barChart.thersday.toDouble(),
+        ),
+      );
+      seriesBarChart.add(
+        Point(
+          x: 6,
+          y: overView.barChart.friday.toDouble(),
+        ),
+      );
+      seriesBarChart.add(
+        Point(
+          x: 7,
+          y: overView.barChart.saturday.toDouble(),
+        ),
+      );
+    }
+
+    isLoading.value = false;
+  }
+
+  final RxInt numUsers = 0.obs;
+  final RxInt numDrivers = 0.obs;
+  final RxInt numOrders = 0.obs;
+  final RxInt numCompaints = 0.obs;
+
+  final List<Sections> seriesPieChart = [];
+
+  final List<Point> seriesLineChart = [];
+
+  final List<Point> seriesBarChart = [];
 
   final RxInt touchedIndex = (-1).obs;
 
